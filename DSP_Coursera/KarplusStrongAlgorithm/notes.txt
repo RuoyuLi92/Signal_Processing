@@ -1,0 +1,17 @@
+KS Algorithm:
+
+repeat a finite support signal x many times to be a signal of length N.
+
+this is equavalent to a signal processing recursion loop
+
+y[n] = x[n] + y[n-M] p.s M = len(x)
+
+to implement this in python
+
+for n in range(0, N):
+
+	y[n] = (x[n] if n < M else 0) + (y[n-M] if n-M >= 0 else 0)
+    return y
+
+
+
