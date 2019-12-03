@@ -1,0 +1,21 @@
+signal is vectors embedded in vector space
+
+the recording device will give you unstructured data and there will be no function to describe the phenomenon, that is the problem about analog signals
+
+signal processing is needed since we must take measurement of physical phenomenon, and we lose information
+
+why integers: storage, processing, transmission
+
+transmission TX transmitter use channel and send informations to receiver RX, in the channel there will be noise
+先衰减信号，再加上noise。因此如何才能恢复原先的信息呢？	唯一能做的就是乘以衰减系数，如此以来信号中的噪音也被放大了
+
+对于long channel需要经历数次衰减和恢复的过程，因此增加了N次噪音出现的场景。如果使用数字信号。就可以规定明确的信号数量级，去除噪声
+
+periodic signals are natural bridge between finite and infinite lengths.
+
+we can always embedded finite-length signals to infinite-length signals
+
+shift signals : finite support shift (padding 0 before and after finite interval) or periodic extension
+
+Power and Energie: Energie will be infinte for periodic and infinte signal but power is limited
+
