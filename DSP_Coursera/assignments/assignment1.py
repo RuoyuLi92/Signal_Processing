@@ -22,10 +22,12 @@ def scaled_fft_db(x):
     # Create the normalized hanning window
     window = np.hanning(N)
     window_nor = window / np.sqrt(np.dot(window, window)) * np.sqrt(511)
-    # Calculate the windowed signal
     
+    # Calculate the windowed signal
     x_win = np.zeros(x.shape)
     x_win = np.multiply(x, window_nor)
+    
+    # Till here the code is wright
     
     # Clculate the normalized DFT coefficients
     Y = np.fft.fft(x) / N
