@@ -24,10 +24,10 @@ def scaled_fft_db(x):
     window_nor = window / np.sqrt(np.dot(window, window)
     
     # Calculate the windowed signal
-    y = np.dot(x, window_nor)
+    y = np.multiply(x, window_nor)
     
     # Clculate the normalized DFT coefficients
-    Y = hp.fft.fft(x) / N
+    Y = np.fft.fft(x) / N
     
     # Take the first 257 values and their magnitude
     N_2 = N/2 + 1
