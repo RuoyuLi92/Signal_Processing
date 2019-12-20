@@ -30,7 +30,7 @@ def scaled_fft_db(x):
     # Till here the code is wright
     
     # Clculate the normalized DFT coefficients
-    Y = np.fft.fft(x) / N
+    Y = np.fft.fft(x_win) / N
     
     # Take the first 257 values and their magnitude
     N_2 = N/2 + 1
@@ -38,9 +38,9 @@ def scaled_fft_db(x):
     
     # Conver the magnitude to dBs
     
-    X_k_dB = np.log(X_k)
+    X_k_dB = np.log10(X_k)
     X_k_dB[np.where(~np.isfinite(X_k_dB))] = -100.0
-    
+    X_k_dB * = 20
     MAX_VALUE_DB = np.float(96.0)
     
     max = np.max(X_k_dB)
