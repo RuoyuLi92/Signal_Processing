@@ -34,7 +34,7 @@ def scaled_fft_db(x):
     
     # Take the first 257 values and their magnitude
     N_2 = N/2 + 1
-    X_k = abs(Y[:N_2])
+    X_k = np.absolute(Y[:N_2])
     
     # Conver the magnitude to dBs
     
