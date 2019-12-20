@@ -1,0 +1,34 @@
+3.5.a
+
+- DFS is an extension of the DFT f  or periodic sequences.
+- A circular time-shift is an natural extension of a shift for finite-length signals.
+
+
+Summary of Lesson 3.5
+The discrete Fourier series is just a different flavour of the DFT applied to periodic series. NN-periodic sequences in the time domain are mapped onto $N$-periodic sequences in the frequency domain. Furthermore, the definition of the DFS retrospectively better justifies the use of circular shifts as the natural extension of shifts for finite-length sequences.
+
+Later in the lesson, we have revisited the Karplus-Strong algorithm to illustrate a key point about the DFS. If we take the DFT of LL repetitions of a finite length sequence of length NN, we obtain a series which is non-zero only at multiple integers of LL. Moreover, these non zero coefficients are just scaled versions of the DFT coefficients of the original finite-length sequence. Therefore, all the spectral information of an NN-periodic sequence is entirely captured by the DFT coefficients of one period.
+
+3.6.DTFT
+
+- the DTFT is a function of real variable omiga.
+- the DTFT is 2pi-periodic, hence we write it as a function of e^jw to emphasise this property.
+- The product of a complex exponential with a signal creates a shift of its spectrum in the frequency domain.
+- DTFT of delta[n] is equal to 1
+- DTFT of 1 is a pulse of Diracs centered at 0.
+
+3.7 Sinusoidal modulation
+
+after two times multiply with the carrier signal. the reconstruction in frequency domain has main problem that.
+we have only recovered the baseband signal exactly.
+
+but we have some spurious high-frequency components. we need to get rid of them.
+
+- to demodulate the signal modulated with a cosine function of frequency omiga_c, we multiply it by a cosine function of the  same carreir frequency.
+
+- the multiplication of a signal by a cosine of frequency omega_c always creates a signal whose spectrum contains two exact replica of the original spetrum, halved and centered at -omega_c and omega_c, but this is only valide if the carrier frequency omega_c is not too clos to pi.
+
+
+3.8 Relationship between transforms
+
+DFT: numerical algorithm (computable), DTFT: mathematical tool (proofs)

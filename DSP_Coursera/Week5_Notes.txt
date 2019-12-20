@@ -1,0 +1,83 @@
+4.1.a linear time invariant filters
+
+Linearity of a system means that the output of sum is the sum of the outputs.
+LTI stands for linear time-invariant.
+causal LTI system are linear frunctions of past inputs and past outputs.
+
+4.1.b convolution
+
+4.2.a The moving average filter
+
+smoothing effect proportional to M, length of the filter.
+number of operations and sotrage also proportional to M
+
+4.2.b The leaky integrator
+
+The leaky integrator is a close approximation of MA filter when M is large.
+
+Summary of Lesson 4.2
+In this lesson we have studied two examples of LTI filters, the moving average and the leaky integrator. The moving average is just a local average computed over the last M observations, including the current one. We have seen the formula for its impulse response and derived a simple recursive formula to compute it efficiently.
+
+The leaky integrator is a special case of the moving average filter when M becomes large. It is also defined by a recursive formula. The basic idea is to add a portion λ of the past accumulated values so far and a fraction 1 - λ of the current observation. By setting the value of λ less than 1, we ensure the system never blows up.
+
+
+4.3.a Filter classification in the time domain.
+
+FIR
+impulse response has finite support, only a finite number of samples are involved in the computation of each output sample. typical example of FIR is Moving Average filter
+
+IIR
+
+impulse response has infinite support, a potentially infinite number of samples are involved in the computation of each output sample, suprisingly, in many cases the computation can still be performed in a finite amount of steps
+
+e.g. the leaky integrator has an infinite supporting pulse response, but due to the decay, each output sample can be computed with only three operations.
+
+
+Causal
+
+impulse response is zero for n<0, only past samples are involvecd in the computation of each output sample, can work online since they only need the past.
+
+Noncausal
+
+impulse response is nonzero for some(or all) n<0
+can still be implemented in a offline fashion (when all input data is available on storage, e.g. in Image Processing
+
+MA can be non Causal filter. if we centered it on zero, and the delay will be discarded since we look into the future information in the signal.
+
+4.3.b Filter stability.
+ 
+* A filter is BIBO stable if and only if its impulse response is abolutetly summable
+
+* FIR filters are always stable. because the impulse response only contains a finite number of non-zero values, and the sum of their absolute valuees wil always be finite
+
+* IIR filter is stable only when the lambda is less than 1 in magnitude
+
+Summary of Lesson 4.3
+We have started this lesson with a classification of LTI filters based on characteristics in the time domain. Depending on the length of their impulse response, we hence distinguish finite impulse response (FIR) and infinite impulse response filters (IIR). Moreover, a filter is causal if its output only depends on past values of the inputs and past values of the outputs. A filter is causal if its impulse response is zero for negative values of nn.
+
+We have also defined the notion of bounded input bounded output (BIBO) stability: the output of a bounded input is bounded. We have also seen that a necessary and sufficient condition for stability is that the impulse response is absolutely summable. As a consequence, FIR filters are always stable. Later in this module, we will study other simpler techniques to assess the stability of an IIR filter.
+
+
+4.4.a The convolution theorem
+
+complex exponentials are eigensequences of LTI systems, i.e., linear filters cannot change the frequency of sinusoids
+
+DTFT of impulse response determines the frequency characteristic of a filter.
+
+The convolution theorem states that the DTFT of the output of a LTI filter is equal to the product of the DTFT of its input and the DTFT of its impulse response.
+
+4.4.b. Examples of frequency respon
+
+we can use the leaky integrator without incurring excessive phase distortion in the pass band, because the phase term is linear in the area where the amplitude is near 1. and Then it will only shift the signal but not change its shape.
+
+Summary of Lesson 4.4
+We have started this lesson with a remarkable result: complex exponentials are eigensequences of LTI filters. This means that when we input a complex exponential at a given frequency in a LTI filter, what we get at the output is a complex exponential at the same frequency; only its magnitude and/or phase may have changed.
+
+More generally, for any input x[n]x[n], we have seen that the DTFT of the output signal is equal to the product of the DTFT of the input and the DTFT of the filter impulse response. The latter is called the frequency response of a filter. To understand the behaviour of a filter, the frequency response, a complex function of the frequency in general, is typically decomposed into
+
+a magnitude term: where does the filter amplify/attenuate
+a phase term: delay and change of shape.
+Later on, we have computed the frequency response of filters we have already studied in the time domain. At this occasion, we have given the definition of a linear phase filter, i.e., a filter whose frequency response can be expressed as the product of a real amplitude and a pure complex exponential. A linear phase filter only introduces a delay in the original sequence and, as an example, the moving average filter is linear phase.
+
+4.5.b The ideal lowpass filter 
+

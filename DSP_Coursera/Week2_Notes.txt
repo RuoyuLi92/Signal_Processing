@@ -1,0 +1,135 @@
+2.2a
+
+To describe a signal (that may be finite lengh, infinite length, periodic, finite support) we need a common framework: vector space
+
+vector spaces are defined by their properties, and once you know the properties are satisfied, you can use all the tools for the space. vector space can be thinked as of an abstract interface calss.
+
+once you have verified that a class of signal forms a vector space, you can apply all the tools of vector spaces on that class of signals.
+
+L_2([-1,1]) space of function, vector x = x(t) t [-1, 1]
+
+orthogonality is indeed the maximal difference between two vectors on the plane
+
+
+inner Product in L2 of the vector is usually used to calculate norm . When comparing two signals we usually use the unit norm vector and use the inner product of two unit vector to measure the similarity
+
+两个时域信号的相似性，为什么可以直接用inner product表示呢？inner product可以表示向量空间中两个矢量的相似性。
+
+例如一个正比例信号和正弦信号，都是asymmetric signal，因此他们单位长度化后的内积再-1到1区间内是0.78，代表这两个信号有很大的相似性。对两个单位长度化得时域信号相乘做积分就是在对两个向量进行点积，可以认为他们得幅值相等，x方向得位置代表着步数，虽然走的步数相同但频率（角速度不同）导致了这一个位置他们在单位圆上的位置不同，也就是辐角不同。因此对应了相似性的概念。
+
+if we take inner product of antisymmetric and a symmetric function, the result will be zero, which means this two signal is orthonogal and has nothing in common from the signal processing point of view.
+
+also we can calculate the norm of distance between two vectors.
+
+MSE(Mean Square Error) is actually the distance in L2 space.
+
+R2，3 sapce and L2 space。 主要区别在于，对于R2，3space，计算innerproduct 或者distance时，就是那一套。但是在L2space中我们总是需要使用积分。
+
+课后知识点。
+
+1. Inner product measure similarity between vectors.
+2. Two vectors are orthogonal if thier inner prodcut is non zero.
+3. the pythagorean theorem is valid in R2,R3 L2
+
+
+2.2b 
+
+finite-length and periodic signals live in C^N, periodic signals sometimes indicated by C^tilde^N
+
+in order to make the inner product is always well defined, we will define a vector space fo infinite-length sequences by requiring that all sequences in this vector space are square-summable l_2(Z) which means the inner product of the sequence and it self is smaller than infinite
+
+Completeness. 
+
+now if we have an infinite sequence of vectors in the vector space that comverges to a limit, we want this limit to be in the vector space as well. if a vector space is closed under the limiting operation, we say that the vector space is complete.
+
+incomplete space example, xn = Sum 1/k!, will converge to xn = e, but e is not a ratinoal number althou all xn are rational numbers.
+
+Hilbertspace: a complete vector space.
+
+
+2.3.a Bases
+
+canonical basis
+
+orthogonal basis
+
+<w(k), w(n)> = 0 for k!=n
+
+orthonormal basis
+
+<w(k),w(n)> = delta[n-k]
+
+we can always orthonormalize a basis via the Gram-Schmidt algorithm
+
+the best of orthonomalize base is that we can easily find the coefficient of the correspongding basis.
+
+by alpha_k = <w(k), x>
+
+Change of basis
+
+a vector is expressed in a non orthonormal basis, and now we want to express it in the orthonormal base
+
+the coefficient of h th basis beita_h = <vh,x> = <v(h), sum alpha_k w(k)> = sum alpha_k*<v(h),w(k)>
+
+坐标系旋转，找到c矩阵
+
+课后知识点
+
+Given an orthogonal basis, you can define an orthonormal basis by deviding each basis vector by its norm.
+
+because the definition of orthonormal basis, is the norm of every basis are one.
+
+
+2.4 
+
+very important concept of DSP is the ability to efficiently compress information prior to transmission.
+
+Vector subspace:
+
+A subset of vectors closed under addition and scalar multiplication
+expend subspcae in more complicated vector sapces such as function vector spaces. e.g. symmetric functions is a subspace since if you add or multiply this symmetric funcion with scarlar, then it will still be symmetric funcion.
+
+Approximation of an vector in subspace -- take the projection of this vector over the subspace
+
+concept of  orthogonal projection: the projection is in subspace. like vector x is defined in 3-dimensional space and if we approximate it in 2-dimensional space. the best willl be orthogonal projection because it has minimum-norm error and error is orthogonal to approximation.
+
+也就是说，这个使用subspace的basis 得到的投影是这个vector在这个subspace中最好的近似。因为误差项和近似是完全不相关的(互相垂直)也就是说误差中不涵盖任何近似空间基底还能够捕捉到的信息
+
+Example polynomial approximation:
+
+vector space PNd p  = a0 + a1t + ... + aN-1t^N-1, a naive basis should be s(k) = t^k k = 0,1...,N-1 this is not orthonomal.
+
+感悟，近似一个信号就相当于在低于信号准确分解所需的维度上，去投影信号，而近似的好坏和投影所需的计算量则需要进一步衡量。
+
+课后知识点
+
+the orthogonal projection is the best approximation in the least-square sense.
+
+orthogonal projection相当于在subspace的所有基底上进行投影，又因为我们选择的subspace 所有的基底都是互相垂直的，且subspace近似基底维度低于原始信号在subspace上的全部展开，因此剩余没有被subspace近似基底所捕捉到的信息，一定垂直于已有的基底，那么，MSE 也就是least square error 的算法是什么意思呢，就是计算近似信号和原始信号在所有通道（基底）上的差的这个误差向量与自己的内积，那么互相垂直的基底他们的点积是零，因此近似信号各个方向上的系数不受其他通道的影响，最终会变成0.
+
+any basis can be transformed into an orghogonal basis using the Gram-Schmidt procedure.
+
+Module 2 is based on Chapter 3 in our textbook (''Signals and Hilbert Spaces'').
+
+
+The book shown in the introduction video is a facsimile copy of "Six Books of Euclid", by Oliver Byrne (Taschen). For Euclid's Elements, see wikipedia.org/Euclid_Elements.
+
+For a fun read about thinking in geometrical spaces, there is the all time classic "Flatland: A Romance of Many Dimensions'' , by Edwin Abbott Abbott.
+
+If you would like to dig deeper into Hilbert Spaces, there are many books available. For a free online version with a point of view similar to what is done in this class, we recommend Chapter 2, ''From Euclid to Hilbert'', in ''Foundation of Signal Processing,'' by M.Vetterli, J.Kovacevic and V.K.Goyal, downloadable at http://www.fourierandwavelets.org/. The book is published by Cambridge University Press.
+
+
+######## Python notebook ######
+
+0x -- prefix, which means hexadecimal(16) expression, 0x1 is 1
+
+& bitwise and
+
+int n & 0x1, if n is even(0,2,4,6,gerad), returns 00000, if n is odd(1,3,5,ungerade), returns 000001
+
+^ bitwise xor, if there is one and only 1 in corresponding bit between x and y, then return 1.
+
+so (n & 0x1) ^ (m & 0x1) == 1, if there is one and only one even number between m and n.
+
+
+

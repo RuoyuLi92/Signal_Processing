@@ -1,0 +1,89 @@
+3.1.a Frequency domain
+
+the purpose of Fourier analysis is to understand a signal in terms of its sinusoidal components.
+
+
+3.1.b The DFT as a change of basis
+
+Fourier basis is usually not orthonormal because the computational reasons.
+
+
+Summary of Lesson 3.1
+Many natural and man-made phenomena exhibit an oscillatory behaviour. After a certain amount of time, called the period, these phenomena comes back to the same position. Conversely, we can define the frequency, i.e. the inverse of the period, that indicates the number of oscillations of the system per second. It thus make sense to use sines and cosines as basic building blocks to represent these oscillatory signals. This is the basic goal of Fourier analysis: to decompose a signal in terms of sines and cosines.
+
+We distinguish two kinds of Fourier tools, Fourier analysis and Fourier synthesis. On the one hand, Fourier analysis allows determining the frequency components present in a signal. We move from the time to the frequency domain. On the other hand, Fourier synthesis allows constructing signals with known frequency components. We move from the frequency domain to the time domain.
+
+We have started our exploration of Fourier analysis with the simplest tool, the discret Fourier transform (DFT) that applies to finite-length signals. If NN is the length of the signals, we have seen that the set of complex exponentials
+
+wk[n]=ej2πNnk,n=0,…,˙N−1,k=0,…,N−1
+with fundamental frequency indexed by k
+
+2pi/N*k
+
+forms an orthogonal basis of CN. The DFT is just a change of basis in this space.
+
+3.2.a DFT definition
+3.2.b DFT calculation
+
+DFT of a sinusoid has always only 2 non-zero elements? no, only for 0 phase delay.
+
+### Very important ####
+
+
+Often the phase is displayed "wrapped" over the [-Pi, Pi] interval. 
+-most numerical packages return wrapped phase
+-phase can be unwrapped by adding multiples of 2PI
+
+3.2.c intepreting a DFT plot
+
+课后知识点
+
+We need in general floot(N/2) + 1 coefficients to specify the magnitude of the DFT of a real signal of length N.
+
+3.3.b
+
+The pitch of a musical instrument is the first frequency component of the signal after DFT
+
+3.3.c DFT synthesis.
+
+DFT synthesis allows reconstructing a signal from its mode.
+
+DFT synthesis of a length N signal uses at most N different frequency components.
+
+3.3.d DFT example Tide prediction
+
+To increase the fit of the prediction model for existing data, we need to increase the number of DFT coefficients
+
+3.3.e DFT example MP3 compression
+
+same amount of noise --> same SNR, shape the noise in different ways.
+
+Errors shaped as the song in the Fourier domain -> higher perceived quality
+
+MP3 puts noise where it is less preceptible by the human auditory system.
+
+To achieve noise shaping, MP3 put more noise when the signal has more energy, as measured by the magnitude of its Fourier transform.
+
+########## Signal of the Day: the first Man-Made Signal From Outer Space #######################
+
+3.4 Short-time Fourier transform STFT.
+
+The STFT is not a new kind of Fourier analysis it is just a clever way of using the DFT to analyse the properties of a signal that evolves over time. We will see why we need this tool by comparing the advantages and disadvantages of the time domain and of the frequency domain representations for a signal. Then we will talk about the STFT and the spectrogram, which is the graphical way to represent the STFT data. Finally, we will briefly talk about time-frequency tilings.
+
+
+3.4.a STFT
+
+time representationobfuscates frequency and frequency representation obfuscates time.
+we know timing but we dont know the content, we know the frequencies but we dont know when they happen.
+
+The STFT is just a standard DFT applied to a restricted portion of a signal.
+The STFT is useful to obtain time and frequency information simultaneously. However there is a fundamental limit we can achieve.
+
+
+3.4.b The spectrogram
+
+color-code the magitude: dar is small, white is large; use 10log10(|X[m;k]|) to see better(poewr in dBs); plot spectral slices one after another to obtain an image like piecture of the time variance spectrum.
+
+in DTMF, to better localize the position of a start and end of a key press, we shall decrease the length of the DFT.
+
+Time frequency tiling reflect the idea that we cannot simultaneously increase the resolution in time and frequency.
