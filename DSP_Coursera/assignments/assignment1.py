@@ -21,7 +21,7 @@ def scaled_fft_db(x):
     
     # Create the normalized hanning window
     window = np.hanning(N)
-    window_nor = window / np.sqrt(np.dot(window, window))
+    window_nor = window / np.sqrt(np.dot(window, window)) * np.sqrt(511)
     # Calculate the windowed signal
     
     x_win = np.zeros(x.shape)
