@@ -15,4 +15,38 @@ def scaled_fft_db(x):
     """
 
     # Your code goes here
+    
+    # The size of signal
+    N = 512.0
+    
+    # Create the normalized hanning window
+    window = np.hanning(N)
+    window_nor = window / np.sqrt(np.dot(window, window)
+    
+    # Calculate the windowed signal
+    y = np.dot(x, window_nor)
+    
+    # Clculate the normalized DFT coefficients
+    Y = hp.fft.fft(x) / N
+    
+    # Take the first 257 values and their magnitude
+    N_2 = N/2 + 1
+    X_k = abs(Y[:N_2])
+    
+    # Conver the magnitude to dBs
+    
+    X_k_dB = np.log(X_k)
+    X_k_dB[np.where(~np.isfinite(X_k_dB)] = -100.0
+    
+    MAX_VALUE_DB = np.float(96.0)
+    
+    max = np.max(X_k_dB)
+    max = max - MAX_VALUE_DB
+    X_k_dB -= max
+    
+    return X_k_dB
+    
+    
+    
+
 
