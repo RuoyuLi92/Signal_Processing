@@ -1,5 +1,5 @@
 # Signal_Processing
-This reository stands for a learning plan in area of signal processing
+This reository stands for a learning plan in the field of signal processing
 
 ## Digital Signal Processing
 Contents of Digital Signal Processing course at Coursera
